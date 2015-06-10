@@ -1,0 +1,65 @@
+/*
+ * ReliabilitySim.cpp
+ *
+ *  Created on: Sep 13, 2012
+ *      Author: anas
+ */
+#include "DynamicAlgo.h"
+#include <time.h>
+
+long dtime(timespec start, timespec end)
+{
+	long sec, nsec;
+	sec = end.tv_sec  - start.tv_sec;
+ 	nsec = end.tv_nsec - start.tv_nsec;
+    	//return ((sec) * 1000 + nsec/1000000); // time in milliseconds
+ 	return ((sec) * 1000000 + nsec/1000); // time in microseconds
+}
+
+int main(void){
+/*
+	DynamicAlgo DAImp(0.005,120,1,1);
+	DAImp.getData();
+	cout << DAImp.fillTable()<<endl;
+*/
+
+	for (int i = 160; i <= 160; i++) {
+
+				DynamicAlgo DAImp(0.5,1,1000000,i,1,1); //6
+				DAImp.getData();
+
+				cout<<i<<" "<<DAImp.fillTable()<<endl;
+	}
+
+
+
+/*
+	//---
+	// Timer code
+	timespec start, end;
+	double sum=0;
+
+	for (int i = 290; i <= 300; i++) {
+		for(int j=0;j<10;j++){
+
+			//---
+			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+
+			DynamicAlgo DAImp(0.05,1,50000,i,1,1);
+			DAImp.getData();
+
+			//cout<<i<<" "<<DAImp.fillTable()<<endl;
+			DAImp.fillTable();
+
+			//---
+			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+			sum+=dtime(start,end);
+		}
+		cout<<i<<" "<<(sum/10)<<endl;
+		sum=0;
+	}*/
+
+}
+
+
+
